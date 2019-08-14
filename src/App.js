@@ -1,26 +1,35 @@
 import React from 'react';
-import logo from './images/logo.svg';
-import './styles/App.scss';
+import './App.scss';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Menu from './components/header/Menu';
+import TopMenu from './components/header/TopMenu';
+
+import Home from './components/pages/Home';
+import Teams from './components/pages/Teams';
+import Players from './components/pages/Players';
+
+class App extends React.Component {
+    render() {
+        return (
+            <Router>
+                <div className="App">
+                    <div className="container">
+                        <header>
+                            <div className="menu__wrapper">
+                                <TopMenu></TopMenu>
+                                <Menu></Menu>
+                            </div>
+                        </header>
+                        <Route exact path="/" component={Home} />
+                        <Route path="/teams" component={Teams} />
+                        <Route path="/players" component={Players} />
+                    </div>
+                </div>
+            </Router>
+        );
+    }
 }
+
 
 export default App;
