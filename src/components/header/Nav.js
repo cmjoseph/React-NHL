@@ -2,17 +2,17 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const routes = [
-	{ to: '/', label: 'Home' },
 	{ to: '/teams', label: 'Teams' },
-	{ to: '/players', label: 'Players' }
+	{ to: '/players', label: 'Players' },
+    { to: '/news', label: 'News' }
 ];
 
 const Nav = () => {
 	const links = routes.map(({ to, label }) => {
-		return <NavLink strict exact to={to} key={to}>{label}</NavLink>}
+		return <li key={to}><NavLink strict exact to={to} key={to}>{label}</NavLink></li>}
 	)
 
-	return <nav>{ links }</nav>;
+	return <ul>{ links }</ul>;
 }
 
 export default Nav

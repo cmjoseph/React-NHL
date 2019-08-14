@@ -1,5 +1,5 @@
 import React from 'react';
-import TeamItem from '../grid/TeamItem';
+import PlayerItem from '../grid/PlayerItem';
 
 class Players extends React.Component {
 	render(){
@@ -12,10 +12,11 @@ class Players extends React.Component {
 			'http://www.youtube.com',
     	]
 	    for (let i = 0; i < index; i++) {
-	    	items.push(<TeamItem key={i} url={links[i]}></TeamItem>)
+	    	items.push(<PlayerItem key={i} url={links[i]}></PlayerItem>)
 	    }
 	    return (
 	        <div className="players__template">
+	        	<h1>Players</h1>
 		        <div className="grid__section">
 		            <div className="grid__wrapper">
 						{items}

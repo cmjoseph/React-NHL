@@ -10,9 +10,8 @@ header{
 		height: auto;
 		margin: 0 auto;
 		.menu__top{
-			width: 100%;
-			background-color: grey;
-			padding: 10px 0;
+			background-color: black;
+			padding: 10px 20px;
 			&_wrapper{
 				display: flex;
 				justify-content: space-between;
@@ -22,9 +21,10 @@ header{
 					a{
 						display: inline-block;
 						text-decoration: none;
-						font-size: 12px;
+						font-size: 14px;
 						font-weight: 700;
-						color: blue;
+						color: white;
+						font-family: 'arial';
 						+ a{
 							margin-left: 10px;
 						}
@@ -38,9 +38,11 @@ header{
 								margin-left: 10px;
 							}
 							> a{
-								font-size: 12px;
+								font-size: 14px;
 								font-weight: 700;
-								color: black;
+								font-family: 'arial';
+								color: white;
+								display: block;
 							}
 						}
 					}
@@ -55,28 +57,32 @@ header{
 				align-items: center;
 				max-width: 1440px;
 				margin: 0 auto;
-				border-left: 1px solid black;
+				border-top: 3px solid black;
+				border-bottom: 3px solid black;
 				.menu__logo{
-					width: 25%;
+					width: 100px;
 					display: flex;
 					justify-content: center;
+					transition: background-color $time ease;
+					&:hover{
+						background-color: black;
+					}
 					img{
 						width: 50px;
 					}
 				}
 				.menu__main_nav{
-					width: 75%;
+					width: calc(100% - 100px);
 					ul{
 						display: flex;
 						justify-content: space-around;
-						border-left: 1px solid black;
-						border-right: 1px solid black;
+						border-left: 3px solid black;
 						li{
 							position: relative;
-							width: 100%;
+							width: 33.33%;
 							text-align: center;
 							+ li{
-								border-left: 1px solid black;
+								border-left: 3px solid black;
 							}
 							> a{
 								text-decoration: none;
@@ -86,7 +92,11 @@ header{
 								font-size: var(--size-normal);
 								font-family: var(--nhl-font);
 								padding: 15px 0;
-								transition: background-color 0.35s ease;
+								transition: background-color $time ease;
+								&.active{
+									background-color: grey;
+									color: black;
+								}
 								&:hover{
 									background-color: black;
 									color: white;

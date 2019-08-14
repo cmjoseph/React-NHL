@@ -16,6 +16,7 @@ class Teams extends React.Component {
 	    }
 	    return (
 	        <div className="teams__template">
+	        	<h1>Teams</h1>
 		        <div className="grid__section">
 		            <div className="grid__wrapper">
 						{items}
