@@ -1,8 +1,8 @@
 import React from 'react';
 
-class Api extends React.Component {
+class TeamApi extends React.Component {
 
-    constructor(props) {
+    constructor(props){
         super(props);
         this.state = {
             error: null,
@@ -11,11 +11,11 @@ class Api extends React.Component {
         };
     }
 
-    componentDidMount() {
+    fetchUsers() {
         fetch("https://statsapi.web.nhl.com/api/v1/teams")
-        .then(res => res.json())
-        .then(
-            (result) => {
+            .then(res => res.json())
+            .then(
+                (result) => {
                 this.setState({
                     isLoaded: true,
                     teams: result.teams
@@ -30,25 +30,24 @@ class Api extends React.Component {
         )
     }
 
-    render() {
-        const { error, isLoaded, teams } = this.state;
-        console.log(this.state);
+    componentDidMount() {
+        this.fetchUsers();
+    }
+
+    render(){
+        const { isLoaded, teams, error } = this.state;
+        console.log(teams);
         if (error) {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
-            return <div>Loading...</div>;
+            return <div className="grid__loading">Loading...</div>;
         } else {
-            return (
-                <ul>
-                {teams.map(team => (
-                    <li key={team.id}>
-                        {team.name} {team.price}
-                    </li>
-                ))}
-                </ul>
-            );
+            return(
+                <div className="grid__wrapper">{teams.map((team) => { return <a href={team.officialSiteUrl} target="_blank" rel="noopener noreferrer" className="grid__team_item" key={team.name}> {team.name} </a>})}</div>
+            )
         }
     }
+
 }
 
-export default Api;
+export default TeamApi;

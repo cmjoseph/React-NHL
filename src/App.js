@@ -11,6 +11,7 @@ import Players from './components/pages/Players';
 import News from './components/pages/News';
 
 class App extends React.Component {
+
     render() {
         return (
             <Router>
@@ -31,6 +32,7 @@ class App extends React.Component {
             </Router>
         );
     }
+    
 }
 
 
