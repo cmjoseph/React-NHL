@@ -9,9 +9,8 @@ const routes = [
 
 const Nav = () => {
 	const links = routes.map(({ to, label }) => {
-		return <li key={to}><NavLink strict exact to={to} key={to}>{label}</NavLink></li>}
-	)
-
+		return <li key={to}><NavLink strict exact to={to} key={to}>{label}</NavLink></li>
+	});
 	return <ul>{ links }</ul>;
 }
 
