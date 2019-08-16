@@ -7,11 +7,13 @@ const routes = [
     { to: '/news', label: 'News' }
 ];
 
+const isActive = (path, match, location) => !!(match || path === location.pathname);
+
 const Nav = () => {
 	const links = routes.map(({ to, label }) => {
-		return <li key={to}><NavLink strict exact to={to} key={to}>{label}</NavLink></li>
+		return <li key={to}><NavLink exact={true} to={to} activeClassName="active" isActive={isActive.bind(this, `${to}`)}>{label}</NavLink></li>
 	});
-	return <ul>{ links }</ul>;
+	return <ul>{links}</ul>;
 }
 
 export default Nav
