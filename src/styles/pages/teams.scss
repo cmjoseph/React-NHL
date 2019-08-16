@@ -1,46 +1,41 @@
 .teams__template{
-	background-color: var(--teams-bg-color);
+	background-color: var(--main-bg-color);
 	width: 100%;
 	height: auto;
 	.grid__section{
 		position: relative;
 		.grid__wrapper{
 			display: grid;
-			grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+			grid-template-columns: 1fr 1fr 1fr 1fr;
 			grid-gap: 20px;
 			padding: 20px;
 			> .grid__team_item{
 				position: relative;
-				border: 3px solid black;
 				height: 140px;
 				padding: 20px;
 				display: flex;
 				flex-direction: column;
 				align-items: center;
 				justify-content: center;
-				background-color: grey;
 				overflow: hidden;
-				&:hover{
-					.grid__team_info{
-						transform: translateY(0);
+				text-decoration: none;
+				img{
+					max-height: 150px;
+					width: 100%;
+					transition: transform $time ease;
+					&:hover{
+						transform: scale(1.2);
 					}
 				}
 				.grid__team_info{
-					position: absolute;
-					top: 0;
-					left: 0;
-					width: 100%;
-					height: 100%;
-					background-color: white;
-					display: flex;
-					flex-direction: column;
+					margin-top: 10px;
+					display: none;
 					align-items: center;
 					justify-content: center;
 					font-family: var(--nhl-font);
 					color: black;
-					font-size: 40px;
-					transition: transform $time cubic-bezier(0.390, 0.575, 0.565, 1.000);
-					transform: translateY(-100%);
+					text-transform: uppercase;
+					font-size: 20px;
 				}
 			}
 		}

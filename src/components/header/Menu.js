@@ -3,9 +3,9 @@ import Nav from './Nav';
 import { NavLink } from 'react-router-dom';
 import Logo from '../../images/nhl.svg';
 
-console.log(Nav);
 
 class Menu extends React.Component {
+
     render(){
         return (
             <div className="menu__main">
@@ -18,6 +18,7 @@ class Menu extends React.Component {
             </div>
         );
     }
+    
 }
 
 export default Menu;
