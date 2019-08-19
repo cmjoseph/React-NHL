@@ -23,10 +23,9 @@
 				justify-content: center;
 				overflow: hidden;
 				text-decoration: none;
-				box-shadow: none;
-				transition: box-shadow $time ease;
+				outline: none;
 				&:hover{
-					box-shadow: 12px 12px 29px #555;
+					// box-shadow: 12px 12px 29px #555;
 					img{
 						transform: scale(1.2);
 						opacity: 1;
