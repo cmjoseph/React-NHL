@@ -10,6 +10,9 @@ class Slider extends React.Component {
             nav: false,
             mouseDrag: true,
             center: true,
+            autoplay: true,
+            autoplayTimeout: 3000,
+            autoplayButton: false,
         };
 
         this.images = [
