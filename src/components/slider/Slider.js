@@ -3,44 +3,57 @@ import TinySlider from "tiny-slider-react";
 
 class Slider extends React.Component {
 
+    constructor(props){
+        super(props);
+        this.state = {
+            teams: props.teams
+        };
+    }
+
     render(){
         const settings = {
-            items: 3,
+            items: this.state.teams.length,
+            controlsPosition: 'bottom',
             lazyload: true,
+            controls: false,
             nav: false,
             mouseDrag: true,
             center: true,
             autoplay: true,
             autoplayTimeout: 3000,
-            autoplayButton: false,
+            autoplayButtonOutput: false,
+            autowidth: true,
+            // gutter: 20,
+            responsive: {
+                960: {
+                    items: 3
+                },
+                768: {
+                    items: 2
+                },
+                480: {
+                    items: 1
+                },
+            }
         };
-
-        this.images = [
-            'https://picsum.photos/400/300/?image=926',
-            'https://picsum.photos/400/300/?image=925',
-            'https://picsum.photos/400/300/?image=924',
-            'https://picsum.photos/400/300/?image=923',
-            'https://picsum.photos/400/300/?image=922',
-            'https://picsum.photos/400/300/?image=921',
-        ];
-
-        const loadingImage = null;
-        const el = null;
+        const teams = this.state.teams;
         const imgStyles = null;
-
         return(
             <div className="slider__container">
-                <h2>Slider</h2>
                 <TinySlider settings={settings}>
-                    {this.images.map((el, index) => (
+                    {teams.map((team, index) => (
                       <div key={index} style={{ position: "relative" }}>
-                        <img
-                          className={`tns-lazy-img`}
-                          src={loadingImage}
-                          data-src={el}
-                          alt=""
-                          style={imgStyles}
-                        />
+                        <a href={team.officialSiteUrl} target="_blank" rel="noopener noreferrer" className="slide__team" key={team.name}>
+                            <img
+                              className={`tns-lazy-img`}
+                              data-src={require(`../../images/teams/${team.teamName.toLowerCase().replace(/\s/g, '')}.svg`)}
+                              alt=""
+                              style={imgStyles}
+                            />
+                            <div className="slide__info">
+                                <span>{team.name}</span>
+                            </div>
+                        </a>
                       </div>
                     ))}
                 </TinySlider>

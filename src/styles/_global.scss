@@ -3,7 +3,8 @@
   	--home-bg-color: red; 
   	--teams-bg-color: green;
   	--players-bg-color: pink;
-  	--nhl-font: 'NHL'; 
+  	--nhl-font: 'NHL';
+    --perm-font: 'Permanent Marker', cursive;
   	--size-normal: 2rem;
 }
 
@@ -13,7 +14,6 @@ body{
 	position: relative;
 	background-color: white;
 }
-
 
 @font-face {
 	font-family: 'NHL';
