@@ -5,7 +5,7 @@ export default class NHLApi{
     }
 
     static getAllPlayers(teamID) {
-        return fetch("https://statsapi.web.nhl.com/api/v1/teams/"+teamID+"?expand=team.roster").then(resp => resp.json()) ;   
+        return fetch("https://statsapi.web.nhl.com/api/v1/teams/"+teamID+"/roster").then(resp => resp.json()) ;   
     }
 
 }

@@ -9,6 +9,7 @@
 	.grid__section{
 		position: relative;
 		.grid__wrapper{
+			position: relative;
 			display: grid;
 			grid-template-columns: 1fr 1fr 1fr 1fr;
 			grid-gap: 40px;
@@ -36,6 +37,7 @@
 					width: 100%;
 					transition: all $time ease;
 					opacity: 0.6;
+					pointer-events: none;
 				}
 				.grid__team_info{
 					margin-top: 10px;
@@ -47,6 +49,15 @@
 					text-transform: uppercase;
 					font-size: 20px;
 				}
+			}
+			.modal{
+				position: fixed;
+				background-color: white;
+				width: 75vw;
+				height: calc(100vh - 204px);
+				top: 154px;
+				left: 50%;
+				transform: translate(-50%, 0);
 			}
 		}
 		.grid__loading{

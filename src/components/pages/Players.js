@@ -1,29 +1,34 @@
 import React from 'react';
-import PlayerApi from '../grid/PlayerApi';
+import NHLApi from '../api/NHLApi';
+import PlayerItem from '../grid/PlayerItem';
 
 class Players extends React.Component {
+	constructor(){
+        super();
+        this.state = {};
+    }
+
+    async componentDidMount() {
+        const data = await NHLApi.getAllPlayers(6);
+        this.setState(data);
+    }
+	
 	render(){
-		const index = 4;
-    	let items = [];
-    	let links = [
-			'http://www.google.com',
-			'http://www.yahoo.com',
-			'http://www.rds.com',
-			'http://www.youtube.com',
-    	]
-	    for (let i = 0; i < index; i++) {
-	    	items.push(<PlayerApi key={i} url={links[i]}></PlayerApi>)
-	    }
-	    return (
-	        <div className="players__template">
-	        	<h1>Players</h1>
-		        <div className="grid__section">
-		            <div className="grid__wrapper">
-						{items}
-		            </div>
+		if (this.state.roster === undefined) {
+            return (
+                <div className="home__template">
+                    loading...
+                </div>
+            );
+        } else {
+		    return (
+		        <div className="teams__template">
+			        <div className="grid__section">
+						<PlayerItem players={this.state.roster}></PlayerItem>
+			        </div>
 		        </div>
-	        </div>
-	    );
+		    );
+		}
 	}
 }
 
