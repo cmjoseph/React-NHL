@@ -9,8 +9,9 @@ class TeamItem extends React.Component {
 
         this.state = {
             logos: props.teams,
-            roster: null,
+            roster: '',
             modal: '',
+            activeTeam: '',
         };
 
         this.handleClick = this.handleClick.bind(this);
@@ -19,17 +20,24 @@ class TeamItem extends React.Component {
 
     async handleClick(e){
         e.preventDefault();
-        const team = await NHLApi.getAllPlayers(e.target.dataset.id);
+        const item = e.target.dataset.id;
+        const team = await NHLApi.getAllPlayers(item);
+        const current = this.props.teams.find(x => x.id === parseInt(item));
+        document.body.classList.add('modal-open');
         this.setState({
             roster: team.roster,
-            modal: ' active',
+            modal: 'active',
+            activeTeam: require(`../../images/teams/${current.teamName.toLowerCase().replace(/\s/g, '')}.svg`),
         });
     }
 
     handleCloseModal(e){
         e.preventDefault();
+        document.body.classList.remove('modal-open');
         this.setState({
+            roster: '',
             modal: '',
+            activeTeam: '',
         });
     }
 
@@ -43,15 +51,22 @@ class TeamItem extends React.Component {
                         <span className="grid__team_info">{logo.name}</span>
                     </a>
             });
-        if (data2) {
+        if (data2 !== null && data2 !== '') {
+            console.log(this.state);
             players = data2.map(player => {
-                return <Image key={player.person.id} logo={`https://nhl.bamcontent.com/images/headshots/current/168x168/${player.person.id}.jpg`} name={player.person.fullName} jersey={player.jerseyNumber}/>
+            return  <div className="modal__player_item" key={player.person.id}>
+                        <Image logo={`https://nhl.bamcontent.com/images/headshots/current/168x168/${player.person.id}.jpg`} name={player.person.fullName} jersey={player.jerseyNumber}/>
+                        <span className="modal__player_info">{player.person.fullName}</span>
+                        <span className="modal__player_jersey">{`#${player.jerseyNumber}`}</span>
+                    </div>
             });
         }
+
         return(
             <div className="grid__wrapper">
                 {logos}
-                <div className={`modal${this.state.modal}`}>
+                <div className="modal">
+                    <img className="modal__team_logo" src={this.state.activeTeam} alt="Logo"/>
                     <button onClick={this.handleCloseModal}>Close</button>
                     <div className="modal__wrapper">
                         {players}
