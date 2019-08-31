@@ -4,7 +4,7 @@ import placeholder from '../../images/nhl.svg';
 class Image extends React.Component {
 
 	addDefaultSrc(ev){
-	  ev.target.src = placeholder;
+		ev.target.src = placeholder;
 	}
 
 	render(){

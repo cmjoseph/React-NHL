@@ -1,6 +1,7 @@
 import React from 'react';
 import NHLApi from '../api/NHLApi';
 import Image from '../media/Images';
+// import Modal from '../tools/Modal';
 
 class TeamItem extends React.Component {
 
@@ -64,12 +65,16 @@ class TeamItem extends React.Component {
 
         return(
             <div className="grid__wrapper">
-                {logos}
+                <div className="grid">
+                    {logos}
+                </div>
                 <div className="modal">
-                    <img className="modal__team_logo" src={this.state.activeTeam} alt="Logo"/>
-                    <button onClick={this.handleCloseModal}>Close</button>
-                    <div className="modal__wrapper">
-                        {players}
+                    <div className="modal__inner">
+                        <img className="modal__team_logo" src={this.state.activeTeam} alt="Logo"/>
+                        <button onClick={this.handleCloseModal}>Close</button>
+                        <div className="modal__grid">
+                            {players}
+                        </div>
                     </div>
                 </div>
             </div>
