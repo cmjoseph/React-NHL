@@ -51,38 +51,38 @@ header{
 			}
 		}
 		.menu__main{
+			position: fixed;
+			top: 0;
 			width: 100%;
 			&_wrapper{
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
 				margin: 0 auto;
-				border-top: 3px solid black;
-				border-bottom: 3px solid black;
 				.menu__logo{
 					width: 100px;
 					display: flex;
 					justify-content: center;
-					transition: background-color $time ease;
+					transition: opacity $time ease;
+					outline: none;
 					&:hover{
-						background-color: black;
+						opacity: 0.5;
 					}
 					img{
-						width: 50px;
+						width: 80px;
 					}
 				}
 				.menu__main_nav{
 					width: calc(100% - 100px);
 					ul{
 						display: flex;
-						justify-content: space-around;
-						border-left: 3px solid black;
+						margin: 0 40px;
 						li{
 							position: relative;
-							width: 33.33%;
+							width: auto;
 							text-align: center;
 							+ li{
-								border-left: 3px solid black;
+								margin-left: 40px;
 							}
 							> a{
 								text-decoration: none;
@@ -91,14 +91,11 @@ header{
 								display: block;
 								font-size: var(--size-normal);
 								font-family: var(--perm-font);
-								padding: 15px 0;
 								transition: background-color $time ease;
 								&.active{
-									background-color: grey;
-									color: black;
+									color: blue;
 								}
 								&:hover{
-									background-color: black;
 									color: white;
 								}
 							}

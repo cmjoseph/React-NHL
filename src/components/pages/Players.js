@@ -3,6 +3,7 @@ import NHLApi from '../api/NHLApi';
 import PlayerItem from '../grid/PlayerItem';
 
 class Players extends React.Component {
+	
 	constructor(){
         super();
         this.state = {};

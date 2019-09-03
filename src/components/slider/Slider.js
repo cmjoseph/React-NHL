@@ -20,7 +20,7 @@ class Slider extends React.Component {
             mouseDrag: true,
             center: true,
             autoplay: true,
-            autoplayTimeout: 3000,
+            autoplayTimeout: 4000,
             autoplayButtonOutput: false,
             autowidth: true,
             // gutter: 20,
@@ -34,7 +34,7 @@ class Slider extends React.Component {
                 480: {
                     items: 1
                 },
-            }
+            },
         };
         const teams = this.state.teams;
         const imgStyles = null;
@@ -42,19 +42,19 @@ class Slider extends React.Component {
             <div className="slider__container">
                 <TinySlider settings={settings}>
                     {teams.map((team, index) => (
-                      <div key={index} style={{ position: "relative" }}>
-                        <a href={team.officialSiteUrl} target="_blank" rel="noopener noreferrer" className="slide__team" key={team.name}>
-                            <img
-                              className={`tns-lazy-img`}
-                              data-src={require(`../../images/teams/${team.teamName.toLowerCase().replace(/\s/g, '')}.svg`)}
-                              alt=""
-                              style={imgStyles}
-                            />
-                            <div className="slide__info">
-                                <span>{team.name}</span>
-                            </div>
-                        </a>
-                      </div>
+                        <div key={index} style={{ position: "relative" }}>
+                            <a href={team.officialSiteUrl} target="_blank" rel="noopener noreferrer" className="slide__team" key={team.name}>
+                                <img
+                                  className={`tns-lazy-img`}
+                                  data-src={require(`../../images/teams/${team.teamName.toLowerCase().replace(/\s/g, '')}.svg`)}
+                                  alt=""
+                                  style={imgStyles}
+                                />
+                                <div className="slide__info">
+                                    <span>{team.name}</span>
+                                </div>
+                            </a>
+                        </div>
                     ))}
                 </TinySlider>
             </div>

@@ -3,7 +3,7 @@ import './App.scss';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Menu from './components/header/Menu';
-import TopMenu from './components/header/TopMenu';
+// import TopMenu from './components/header/TopMenu';
 
 import Home from './components/pages/Home';
 import Teams from './components/pages/Teams';
@@ -19,7 +19,6 @@ class App extends React.Component {
                     <div className="container">
                         <header>
                             <div className="menu__wrapper">
-                                <TopMenu></TopMenu>
                                 <Menu></Menu>
                             </div>
                         </header>

@@ -11,7 +11,10 @@ class Home extends React.Component {
 
     constructor(){
         super();
-        this.state = {};
+        this.state = {
+            artist: 'Billy Talent Feat. Anti-Flag',
+            song: 'Turn Your Back',
+        };
     }
 
     async componentDidMount() {
@@ -30,7 +33,7 @@ class Home extends React.Component {
             return (
                 <div className="home__template">
                     <Video url={BackgroundVideo}></Video>
-                    <Audio url={BackgroundMusic}></Audio>
+                    <Audio url={BackgroundMusic} artist={this.state.artist} song={this.state.song}></Audio>
                     <Slider teams={this.state.teams}></Slider>
                 </div>
             );
