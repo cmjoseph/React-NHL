@@ -8,7 +8,7 @@ class Menu extends React.Component {
 
     render(){
         return (
-            <div className="menu__main">
+            <div className='menu__main'>
                 <div className="menu__main_wrapper">
                     <NavLink className="menu__logo" strict exact to={'/'}><img id="logo" src={Logo} alt="Logo" /></NavLink>
                 	<div className="menu__main_nav">
@@ -18,7 +18,6 @@ class Menu extends React.Component {
             </div>
         );
     }
-    
 }
 
 export default Menu;

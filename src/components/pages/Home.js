@@ -32,9 +32,11 @@ class Home extends React.Component {
         } else {
             return (
                 <div className="home__template">
-                    <Video url={BackgroundVideo}></Video>
-                    <Audio url={BackgroundMusic} artist={this.state.artist} song={this.state.song}></Audio>
-                    <Slider teams={this.state.teams}></Slider>
+                    <div className="container">
+                        <Video url={BackgroundVideo}></Video>
+                        <Audio url={BackgroundMusic} artist={this.state.artist} song={this.state.song}></Audio>
+                        <Slider teams={this.state.teams}></Slider>
+                    </div>
                 </div>
             );
         }

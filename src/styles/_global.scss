@@ -6,6 +6,7 @@
   	--nhl-font: 'NHL';
     --perm-font: 'Permanent Marker', cursive;
   	--size-normal: 1.5rem;
+    --size-sticky: 1.2rem;
 }
 
 $time: 0.35s;
@@ -31,6 +32,28 @@ body{
 	left: 0;
 	z-index: 9900;
 	background-color: rgba(0,0,0,0.8);
+}
+
+.container{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.loading__template{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    z-index: 9900;
+    background-image: url('../images/ice.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
 }
 
 @font-face {

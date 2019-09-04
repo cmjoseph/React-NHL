@@ -24,9 +24,11 @@ class Players extends React.Component {
         } else {
 		    return (
 		        <div className="teams__template">
-			        <div className="grid__section">
-						<PlayerItem players={this.state.roster}></PlayerItem>
-			        </div>
+                    <div className="container">
+    			        <div className="grid__section">
+    						<PlayerItem players={this.state.roster}></PlayerItem>
+    			        </div>
+                    </div>
 		        </div>
 		    );
 		}

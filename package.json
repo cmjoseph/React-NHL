@@ -31,5 +31,8 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "gsap": "^2.1.3",
+    "react-transition-group": "^4.2.2"
+  }
 }

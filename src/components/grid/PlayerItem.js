@@ -12,8 +12,8 @@ class PlayerItem extends React.Component {
 
     render(){
         const data = this.state.roster;
-        let players = data.map(player => {
-            return <Image logo={`https://nhl.bamcontent.com/images/headshots/current/168x168/${player.person.id}.jpg`} name={player.person.fullName} jersey={player.jerseyNumber}/>
+        let players = data.map((player, key) => {
+            return <Image key={key} logo={`https://nhl.bamcontent.com/images/headshots/current/168x168/${player.person.id}.jpg`} name={player.person.fullName} jersey={player.jerseyNumber}/>
         });
 
         return(

@@ -1,31 +1,39 @@
 import React from 'react';
 import NHLApi from '../api/NHLApi';
 import TeamItem from '../grid/TeamItem';
+import Logo from '../../images/nhl.svg';
 
 class Teams extends React.Component {
 
 	constructor(){
         super();
-        this.state = {};
+        this.state = {
+        	done: false,
+        	teams: undefined,
+        };
     }
 
     async componentDidMount() {
         const data = await NHLApi.getAllTeams();
-        this.setState(data);
+        setTimeout(()=>{ 
+        	this.setState({ done: true, teams: data.teams});
+        }, 1000);
     }
 	
 	render(){
-		if (this.state.teams === undefined) {
+		if (this.state.done === false) {
             return (
-                <div className="home__template">
-                    loading...
+                <div className="loading__template">
+                    <img src={Logo} alt="Loading..."/>
                 </div>
             );
         } else {
 		    return (
 		        <div className="teams__template">
-			        <div className="grid__section">
-						<TeamItem teams={this.state.teams}></TeamItem>
+			        <div className="container">
+				        <div className="grid__section">
+							<TeamItem teams={this.state.teams}></TeamItem>
+				        </div>
 			        </div>
 		        </div>
 		    );

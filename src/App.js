@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.scss';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Transition, TransitionGroup } from 'react-transition-group';
 import Menu from './components/header/Menu';
 // import TopMenu from './components/header/TopMenu';
 
@@ -12,20 +12,41 @@ import News from './components/pages/News';
 
 class App extends React.Component {
 
+    constructor(){
+        super();
+        this.state = {
+            sticky: '',
+        }
+        this.onScrollMenu = this.onScrollMenu.bind(this);
+        window.addEventListener('scroll', this.onScrollMenu);
+    }
+
+    onScrollMenu() {
+        const header = document.querySelector('header');
+        const sticky = header.offsetTop;
+        if (window.pageYOffset > sticky) {
+            this.setState({sticky: 'sticky'});
+        } else {
+            this.setState({sticky: ''});
+        }
+    }
+
     render() {
         return (
             <Router>
                 <div className="App">
                     <div className="container">
-                        <header>
+                        <header className={this.state.sticky}>
                             <div className="menu__wrapper">
                                 <Menu></Menu>
                             </div>
                         </header>
-                        <Route exact path="/" component={Home} />
-                        <Route path="/teams" component={Teams} />
-                        <Route path="/players" component={Players} />
-                        <Route path="/news" component={News} />
+                        <Switch>
+                            <Route exact path="/" component={Home} />
+                            <Route path="/teams" component={Teams} />
+                            <Route path="/players" component={Players} />
+                            <Route path="/news" component={News} />
+                        </Switch>
                     </div>
                 </div>
             </Router>

@@ -13,7 +13,7 @@ class Audio extends React.Component {
 
   	handleClickPlayer(){
         const audio = document.querySelector('audio');
-        const title = document.querySelector('marquee');
+        // const title = document.querySelector('marquee');
         if (this.state.playing === false) {
         	audio.play();
         	// title.start();
