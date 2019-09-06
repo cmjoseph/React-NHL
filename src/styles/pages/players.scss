@@ -12,48 +12,53 @@
 	.grid__section{
 		position: relative;
         padding: 40px;
-		.grid__wrapper{
-			display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-            grid-gap: 20px;
-            overflow: hidden;
-            > .grid__player{
-                position: relative;
-                padding: 10px;
-                background-color: white;
-                text-decoration: none;
-                overflow: hidden;
-                box-shadow: 5px 5px 10px #555;
+        .grid__search{
+            position: relative;
+            input{
+                margin-bottom: 40px;
+                height: 30px;
+                width: 50%;
                 border: 1px solid black;
-                &:hover{
-                    background-color: lightblue;
+                padding: 5px 10px;
+            }
+    		.grid__wrapper{
+    			display: grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+                grid-gap: 20px;
+                overflow: hidden;
+                > .grid__player{
+                    position: relative;
+                    padding: 10px;
+                    background-color: rgba(255, 255, 255, 0.6);
+                    text-decoration: none;
+                    overflow: hidden;
+                    box-shadow: 5px 5px 10px #555;
+                    border: 1px solid black;
+                    &:hover{
+                        background-color: lightblue;
+                    }
+                    span{
+                        position: relative;
+                        font-family: var(--perm-font);
+                        font-size: var(--size-small);
+                        color: black;
+                        text-align: center;
+                        width: 100%;
+                        display: block;
+                        z-index: 20;
+                        transition: all $time ease;
+                    }
                     img{
-                        opacity: 0.7;
-                        right: -80px;
+                        position: absolute;
+                        top: 50%;
+                        right: -20px;
+                        width: 80px;
+                        transform: translate(0, -50%);
+                        opacity: 0.6;
+                        z-index: 10;
                     }
                 }
-                span{
-                    position: relative;
-                    font-family: var(--perm-font);
-                    font-size: var(--size-small);
-                    color: black;
-                    text-align: center;
-                    width: 100%;
-                    display: block;
-                    z-index: 20;
-                    transition: all $time ease;
-                }
-                img{
-                    position: absolute;
-                    top: 50%;
-                    right: -20px;
-                    width: 100px;
-                    transform: translate(0, -50%);
-                    transition: opacity $time ease, right $time ease;
-                    opacity: 0.3;
-                    z-index: 10;
-                }
-            }
-		}
+    		}
+        }
 	}
 }

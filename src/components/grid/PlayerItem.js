@@ -1,6 +1,7 @@
 import React from 'react';
 import NHLApi from '../api/NHLApi';
 import Image from '../media/Images';
+import SearchBar from '../tools/SearchBar';
 
 class PlayerItem extends React.Component {
 
@@ -30,21 +31,22 @@ class PlayerItem extends React.Component {
     render(){
         if (this.state.rosters !== undefined) {
             const data = this.state.rosters;
+            const names = [];
             let rosters = data.map((roster, key) => {
                 const teamroster = roster.list;
                 const teamlogo = roster.logo;
                 let players = teamroster.map((player, key) => {
-                    return <a className="grid__player" href={player.person.link} key={key} team={teamlogo} face={`https://nhl.bamcontent.com/images/headshots/current/168x168/${player.person.id}.jpg`} name={player.person.fullName} jersey={player.jerseyNumber}>
-                        <span>{player.person.fullName}</span>
-                        <img src={require(`../../images/teams/${teamlogo.toLowerCase().replace(/\s/g, '')}.svg`)}/>
-                    </a>
+                    names.push({
+                        name: player.person.fullName, 
+                        team: teamlogo,
+                        face: player.person.id,
+                        jersey: player.jerseyNumber,
+                        link: player.person.link,
+                    });
                 });
-                return players;
             });
             return(
-                <div className="grid__wrapper">
-                    {rosters}
-                </div>
+                <SearchBar users={names}></SearchBar>
             )
         } else {
             return(
