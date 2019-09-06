@@ -43,7 +43,7 @@ class Audio extends React.Component {
 						<path id="Line_9" data-name="Line 9" d="M48.91,15l-0.12,0A1,1,0,0,0,48,16v6a1,1,0,1,0,2,0s0,0,0,0V16a1,1,0,0,0-1-1H48.91Z"/>
 					</svg>
 		    	</div>
-		        <audio id="audio" preload="auto" volume="0.1" autoPlay loop controls controlsList="nodownload">
+		        <audio id="audio" preload="auto" volume="0.1" loop controls controlsList="nodownload">
 				  	<source src={this.props.url} type="audio/mp3"/>
 				</audio>
 			</div>

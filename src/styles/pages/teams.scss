@@ -29,30 +29,38 @@
 					text-decoration: none;
 					outline: none;
 					&:hover{
+						.grid__item_content{
+							img{
+								transform: scale(1.2);
+								opacity: 1;
+							}
+							.grid__team_info{
+								opacity: 0;
+							}
+						}
+					}
+					.grid__item_content{
+						position: relative;
 						img{
-							transform: scale(1.2);
-							opacity: 1;
+							max-height: 200px;
+							width: 100%;
+							transition: all $time ease;
+							opacity: 0.6;
+							pointer-events: none;
 						}
 						.grid__team_info{
-							opacity: 0;
+							display: block;
+							width: 100%;
+							margin-top: 10px;
+							align-items: center;
+							justify-content: center;
+							font-family: var(--perm-font);
+							color: black;
+							transition: opacity $time ease;
+							text-transform: uppercase;
+							font-size: 20px;
+							text-align: center;
 						}
-					}
-					img{
-						max-height: 230px;
-						width: 100%;
-						transition: all $time ease;
-						opacity: 0.6;
-						pointer-events: none;
-					}
-					.grid__team_info{
-						margin-top: 10px;
-						align-items: center;
-						justify-content: center;
-						font-family: var(--perm-font);
-						color: black;
-						transition: opacity $time ease;
-						text-transform: uppercase;
-						font-size: 20px;
 					}
 				}
 			}

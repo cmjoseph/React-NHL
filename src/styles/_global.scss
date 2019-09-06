@@ -7,9 +7,20 @@
     --perm-font: 'Permanent Marker', cursive;
   	--size-normal: 1.5rem;
     --size-sticky: 1.2rem;
+    --size-small: 0.9rem;
 }
 
 $time: 0.35s;
+
+html{
+    background-color: var(--main-bg-color);
+    width: 100%;
+    height: auto;
+    background-image: url('../images/ice.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
 
 body{
 	position: relative;

@@ -25,7 +25,7 @@ class Home extends React.Component {
     render(){
         if (this.state.teams === undefined) {
             return (
-                <div className="home__template">
+                <div className="loading__template">
                     loading...
                 </div>
             );

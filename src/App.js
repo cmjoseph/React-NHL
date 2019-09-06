@@ -15,7 +15,7 @@ class App extends React.Component {
     constructor(){
         super();
         this.state = {
-            sticky: '',
+            sticky: undefined,
         }
         this.onScrollMenu = this.onScrollMenu.bind(this);
         window.addEventListener('scroll', this.onScrollMenu);
@@ -27,7 +27,7 @@ class App extends React.Component {
         if (window.pageYOffset > sticky) {
             this.setState({sticky: 'sticky'});
         } else {
-            this.setState({sticky: ''});
+            this.setState({sticky: undefined});
         }
     }
 

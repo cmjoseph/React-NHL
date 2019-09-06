@@ -81,6 +81,22 @@
         z-index: 200;
         .tns-outer{
         	height: 100%;
+            .tns-controls{
+                position: fixed;
+                bottom: 40px;
+                left: 20px;
+                button{
+                    background: none;
+                    font-size: 30px;
+                    border: 0;
+                    &:hover{
+                        color: white;
+                    }
+                    + button{
+                        margin-left: 20px;
+                    }
+                }
+            }
             .tns-ovh{
             	height: 100%;
                 .tns-inner{
@@ -92,24 +108,26 @@
 	                    .tns-item{
 	                        padding: 40px 0;
 	                        &.tns-slide-active + .tns-slide-active{
-	                            .slide__team{
+	                            .slide__team_content{
 	                            	opacity: 1;
 	                                transform: scale(1.4);
-	                            }
-	                            .slide__info{
-	                                opacity: 1;
+    	                            .slide__info{
+    	                                opacity: 1;
+    	                            }
 	                            }
 	                        }
 	                        &.tns-slide-active + .tns-slide-active + .tns-slide-active{
-	                        	.slide__team{
+	                        	.slide__team_content{
 	                                transform: scale(1);
 	                                opacity: 0.5;
-	                            }
-	                            .slide__info{
-	                                opacity: 0;
+    	                            .slide__info{
+                                        transition: opacity 0.2s ease;
+                                        transition-delay: 0;
+    	                                opacity: 0;
+    	                            }
 	                            }
 	                            &:hover{
-	                            	.slide__team{
+	                            	.slide__team_content{
 	                            		opacity: 1;
 	                            	}
 	                            }
@@ -120,27 +138,33 @@
                             	}
                             }
 	                        .slide__team{
-	                            border-radius: 10px;
 	                            color: black;
 	                            display: block;
-	                            transition: all 0.7s ease;
-	                            transform: scale(1);
-	                            opacity: 0.5;
-	                            img{
-	                                // max-width: 400px;
-	                                height: 420px;
-	                                display: block;
-	                                margin: 0 auto;
-	                            }
-	                            .slide__info{
-	                                margin-top: 10px;
-	                                transition: opacity $time ease;
-	                                font-family: var(--perm-font);
-	                                color: black;
-	                                text-transform: uppercase;
-	                                font-size: 20px;
-	                                opacity: 0;
-	                            }
+                                &_content{
+                                    position: relative;
+    	                            transition: all 0.7s ease;
+    	                            transform: scale(1);
+    	                            opacity: 0.5;
+    	                            img{
+                                        min-height: 360px;
+    	                                height: 100%;
+    	                                display: block;
+    	                                margin: 0 auto;
+    	                            }
+    	                            .slide__info{
+                                        display: block;
+                                        width: 100%;
+    	                                margin-top: 10px;
+    	                                transition: opacity $time ease;
+    	                                font-family: var(--perm-font);
+    	                                color: black;
+    	                                text-transform: uppercase;
+    	                                font-size: 20px;
+                                        transition: opacity 0.7s ease;
+                                        transition-delay: 0.5s;
+    	                                opacity: 0;
+    	                            }
+                                }
 	                        }
 	                    }
                 	}
