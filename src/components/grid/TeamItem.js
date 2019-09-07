@@ -66,7 +66,13 @@ class TeamItem extends React.Component {
                     </div>
             });
         }
-        if (logos !== undefined) {
+        if (logos === undefined) {
+            return(
+                <div className="loading__template">
+                    loading...
+                </div>
+            )
+        } else {
             return(
                 <div className="grid__wrapper">
                     <div className="grid">
@@ -81,12 +87,6 @@ class TeamItem extends React.Component {
                             </div>
                         </div>
                     </div>
-                </div>
-            )
-        } else {
-            return(
-                <div className="loading__template">
-                    loading...
                 </div>
             )
         }

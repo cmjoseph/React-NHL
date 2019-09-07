@@ -10,7 +10,7 @@ class Modal extends React.Component {
     }
 
     async componentDidMount() {
-       await this.setState({data:this.props});
+       
     }
 
 	render(){

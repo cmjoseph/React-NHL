@@ -12,162 +12,176 @@
     flex-direction: column;
     text-align: center;
     justify-content: center;
-    .video__container{
-    	position: absolute;
-    	top: 0;
-    	left: 0;
-    	z-index: 100;
-    	opacity: 0.5;
-    }
-    .audio__container{
-    	position: absolute;
-    	bottom: 20px;
-    	right: 20px;
-    	z-index: 300;
-    	.audio__play{
-    		display: flex;
-    		align-items: center;
-    		justify-content: center;
-			opacity: 0.8;
-			transition: opacity $time ease;
-			cursor: pointer;	
-    		&:hover{
-				opacity: 1;
-				button, #songname, #wave{
-					color: white;
-					fill: white;
-					border-color: transparent transparent transparent white;
-				}
-    		}
-    		button{
-				border: 0;
-				background: transparent;
-				box-sizing: border-box;
-				width: 0;
-				height: 20px;
-				margin-right: 15px;
-				border-color: transparent transparent transparent black;
-				transition: 100ms all ease;
-				cursor: pointer;
-				// play state
-				border-style: solid;
-				border-width: 10px 0 10px 20px;
-				&.active {
-					border-style: double;
-					border-width: 0px 0 0px 20px;
-				}
-				&:hover {
-					border-color: transparent transparent transparent white;
-				}
-			}
-    		#songname{
-    			width: 150px;
-    			margin-right: 15px;
-    			overflow: hidden;
-    			color: black;
-    			font-family: var(--perm-font);
-    		}
-    		#waves{
-    			pointer-events: none;
-    		}		
-    	}
-		audio{
-			display: none;
-		}
-    }
-    .slider__container{
-        position: relative;
+    .container{
+        position: absolute;
+        width: 100%;
         height: 100%;
-        z-index: 200;
-        .tns-outer{
-        	height: 100%;
-            .tns-controls{
-                position: fixed;
-                bottom: 40px;
-                left: 20px;
-                button{
-                    background: none;
-                    font-size: 30px;
-                    border: 0;
-                    &:hover{
-                        color: white;
-                    }
-                    + button{
-                        margin-left: 20px;
+        margin: 0 auto;
+    	z-index: 100;
+        .video__container{
+        	position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 160%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: 200;
+            opacity: 0.3;
+            transform: translateX(-50%) translateY(-50%);
+        }
+        .audio__container{
+        	position: absolute;
+        	bottom: 20px;
+        	right: 20px;
+        	z-index: 400;
+        	.audio__play{
+        		display: flex;
+        		align-items: center;
+        		justify-content: center;
+    			opacity: 0.8;
+    			transition: opacity $time ease;
+    			cursor: pointer;	
+        		&:hover{
+    				opacity: 1;
+    				button, #songname, #wave{
+    					color: white;
+    					fill: white;
+    					border-color: transparent transparent transparent white;
+    				}
+        		}
+        		button{
+    				border: 0;
+    				background: transparent;
+    				box-sizing: border-box;
+    				width: 0;
+    				height: 20px;
+    				border-color: transparent transparent transparent black;
+    				transition: 100ms all ease;
+    				cursor: pointer;
+    				// play state
+    				border-style: solid;
+    				border-width: 10px 0 10px 20px;
+    				&.active {
+    					border-style: double;
+    					border-width: 0px 0 0px 20px;
+    				}
+    				&:hover {
+    					border-color: transparent transparent transparent white;
+    				}
+    			}
+        		#songname{
+        			width: 150px;
+        			margin-right: 15px;
+        			overflow: hidden;
+        			color: black;
+        			font-family: var(--perm-font);
+        		}
+        		#waves{
+        			pointer-events: none;
+        		}		
+        	}
+    		audio{
+    			display: none;
+    		}
+        }
+        .slider__container{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 300;
+            .tns-outer{
+            	height: 100%;
+                .tns-controls{
+                    position: fixed;
+                    bottom: 40px;
+                    left: 20px;
+                    button{
+                        background: none;
+                        font-size: 30px;
+                        border: 0;
+                        &:hover{
+                            color: white;
+                        }
+                        + button{
+                            margin-left: 20px;
+                        }
                     }
                 }
-            }
-            .tns-ovh{
-            	height: 100%;
-                .tns-inner{
+                .tns-ovh{
                 	height: 100%;
-                	.tns-slider{
-                		display: flex;
-                		align-items: center;
-                		height: 100%;
-	                    .tns-item{
-	                        padding: 40px 0;
-	                        &.tns-slide-active + .tns-slide-active{
-	                            .slide__team_content{
-	                            	opacity: 1;
-	                                transform: scale(1.4);
-    	                            .slide__info{
-    	                                opacity: 1;
+                    .tns-inner{
+                    	height: 100%;
+                    	.tns-slider{
+                    		display: flex;
+                    		align-items: center;
+                    		height: 100%;
+    	                    .tns-item{
+    	                        padding: 40px 0;
+    	                        &.tns-slide-active + .tns-slide-active{
+    	                            .slide__team_content{
+    	                            	opacity: 1;
+    	                                transform: scale(1.4);
+        	                            .slide__info{
+        	                                opacity: 1;
+        	                            }
     	                            }
-	                            }
-	                        }
-	                        &.tns-slide-active + .tns-slide-active + .tns-slide-active{
-	                        	.slide__team_content{
-	                                transform: scale(1);
-	                                opacity: 0.5;
-    	                            .slide__info{
-                                        transition: opacity 0.2s ease;
-                                        transition-delay: 0;
-    	                                opacity: 0;
+    	                        }
+    	                        &.tns-slide-active + .tns-slide-active + .tns-slide-active{
+    	                        	.slide__team_content{
+    	                                transform: scale(1);
+    	                                opacity: 0.5;
+        	                            .slide__info{
+                                            transition: opacity 0.2s ease;
+                                            transition-delay: 0;
+        	                                opacity: 0;
+        	                            }
     	                            }
-	                            }
-	                            &:hover{
-	                            	.slide__team_content{
-	                            		opacity: 1;
-	                            	}
-	                            }
-	                        }
-                            &:hover{
-                            	.slide__team{
-                            		opacity: 1;
-                            	}
-                            }
-	                        .slide__team{
-	                            color: black;
-	                            display: block;
-                                &_content{
-                                    position: relative;
-    	                            transition: all 0.7s ease;
-    	                            transform: scale(1);
-    	                            opacity: 0.5;
-    	                            img{
-                                        min-height: 360px;
-    	                                height: 100%;
-    	                                display: block;
-    	                                margin: 0 auto;
+    	                            &:hover{
+    	                            	.slide__team_content{
+    	                            		opacity: 1;
+    	                            	}
     	                            }
-    	                            .slide__info{
-                                        display: block;
-                                        width: 100%;
-    	                                margin-top: 10px;
-    	                                transition: opacity $time ease;
-    	                                font-family: var(--perm-font);
-    	                                color: black;
-    	                                text-transform: uppercase;
-    	                                font-size: 20px;
-                                        transition: opacity 0.7s ease;
-                                        transition-delay: 0.5s;
-    	                                opacity: 0;
-    	                            }
+    	                        }
+                                &:hover{
+                                	.slide__team{
+                                		opacity: 1;
+                                	}
                                 }
-	                        }
-	                    }
-                	}
+    	                        .slide__team{
+    	                            color: black;
+    	                            display: block;
+                                    &_content{
+                                        position: relative;
+        	                            transition: all 0.7s ease;
+        	                            transform: scale(1);
+        	                            opacity: 0.5;
+        	                            img{
+                                            min-height: 360px;
+        	                                height: 100%;
+        	                                display: block;
+        	                                margin: 0 auto;
+        	                            }
+        	                            .slide__info{
+                                            display: block;
+                                            width: 100%;
+        	                                margin-top: 10px;
+        	                                transition: opacity $time ease;
+        	                                font-family: var(--perm-font);
+        	                                color: black;
+        	                                text-transform: uppercase;
+        	                                font-size: 20px;
+                                            transition: opacity 0.7s ease;
+                                            transition-delay: 0.5s;
+        	                                opacity: 0;
+        	                            }
+                                    }
+    	                        }
+    	                    }
+                    	}
+                    }
                 }
             }
         }

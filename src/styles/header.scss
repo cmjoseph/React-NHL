@@ -10,6 +10,7 @@ header{
 	transition: all $time ease-in-out;
 	&.sticky{
 		background-color: rgba(0, 0, 0, 0.4);
+		border-bottom: 1px solid black;
 		height: 50px;
 		.menu__wrapper .menu__main{
 			&_wrapper{
@@ -84,6 +85,7 @@ header{
 				justify-content: space-between;
 				align-items: center;
 				margin: 0 auto;
+				padding: 0 40px;
 				height: 100%;
 				.menu__logo{
 					width: 100px;

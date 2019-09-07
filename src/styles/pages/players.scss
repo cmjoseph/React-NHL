@@ -2,7 +2,7 @@
 	position: relative;
 	background-color: var(--main-bg-color);
     width: 100%;
-    height: auto;
+    min-height: 100vh;
     background-image: url('../../images/ice.jpg');
     background-repeat: no-repeat;
     background-position: center center;
@@ -12,20 +12,40 @@
 	.grid__section{
 		position: relative;
         padding: 40px;
+        @media #{$mobile}{
+            padding: 20px;
+        }
         .grid__search{
             position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            h3{
+                font-family: var(--perm-font);
+                font-size: var(--size-normal);
+                color: black;
+            }
             input{
-                margin-bottom: 40px;
-                height: 30px;
-                width: 50%;
+                height: 40px;
+                width: 100%;
+                max-width: 768px;
                 border: 1px solid black;
                 padding: 5px 10px;
+                box-sizing: border-box;
+                margin: 20px auto;
             }
     		.grid__wrapper{
     			display: grid;
-                grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+                grid-template-columns: repeat(7, 1fr);
                 grid-gap: 20px;
                 overflow: hidden;
+                @media #{$tablet}{
+                    grid-template-columns: repeat(4, 1fr);
+                }
+                @media #{$mobile}{
+                    grid-template-columns: 1fr;
+                    width: 100%;
+                }
                 > .grid__player{
                     position: relative;
                     padding: 10px;
@@ -47,6 +67,7 @@
                         display: block;
                         z-index: 20;
                         transition: all $time ease;
+                        pointer-events: none;
                     }
                     img{
                         position: absolute;

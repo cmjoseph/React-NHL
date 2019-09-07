@@ -9,6 +9,7 @@ class SearchBar extends React.Component {
             users: []
         };
         this.handleChange = this.handleChange.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     componentDidMount() {
@@ -24,6 +25,11 @@ class SearchBar extends React.Component {
         });
     }
 
+    handleClick(e){
+        e.preventDefault();
+        console.dir(e.target.dataset);
+    }
+
     render(){
         let _users = this.state.users;
         let search = this.state.searchString.trim().toLowerCase();
@@ -36,7 +42,7 @@ class SearchBar extends React.Component {
 
         return (
         <div className="grid__search">
-            <h3>React - simple search</h3>
+            <h3>Search the NHL</h3>
             <input
                 type="text"
                 value={this.state.searchString}
@@ -47,7 +53,7 @@ class SearchBar extends React.Component {
             <div className="grid__wrapper">
                 {_users.map((l,key) => {
                     return (
-                        <a className="grid__player" href={l.link} key={key} team={l.team} face={`https://nhl.bamcontent.com/images/headshots/current/168x168/${l.face}.jpg`} name={l.name} jersey={l.jersey}>
+                        <a className="grid__player" onClick={this.handleClick} href={l.link} key={key} data-team={l.team} data-face={`https://nhl.bamcontent.com/images/headshots/current/168x168/${l.face}.jpg`} data-name={l.name} data-jersey={l.jersey}>
                             <span>{l.name}</span>
                             <img src={require(`../../images/teams/${l.team.toLowerCase().replace(/\s/g, '')}.svg`)}/>
                         </a>

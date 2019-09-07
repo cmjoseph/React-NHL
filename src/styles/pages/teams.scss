@@ -15,9 +15,18 @@
 			padding: 0 40px 40px;
 			.grid{
 				display: grid;
-				grid-template-columns: 1fr 1fr 1fr 1fr;
+				grid-template-columns: repeat(4, 1fr);
 				grid-gap: 40px;
 				overflow: hidden;
+				@media #{$tablet}{
+					grid-template-columns: repeat(3, 1fr);
+				}
+				@media #{$mobile}{
+					grid-template-columns: repeat(2, 1fr);
+				}
+				@media #{$cell}{
+					grid-template-columns: 1fr;
+				}
 				> .grid__team_item{
 					position: relative;
 					height: auto;
@@ -28,10 +37,15 @@
 					justify-content: center;
 					text-decoration: none;
 					outline: none;
+					background-color: rgba(255, 255, 255, 0.6);
+					overflow: hidden;
+					box-shadow: 5px 5px 10px #555;
+					border: 1px solid black;
 					&:hover{
+						background-color: lightblue;
 						.grid__item_content{
 							img{
-								transform: scale(1.2);
+								transform: scale(1.5) translateY(10px) translateZ(0);
 								opacity: 1;
 							}
 							.grid__team_info{
@@ -41,12 +55,18 @@
 					}
 					.grid__item_content{
 						position: relative;
+						display: flex;
+						flex-direction: column;
+						align-items: center;
 						img{
-							max-height: 200px;
-							width: 100%;
+							position: relative;
+							max-height: 160px;
+							width: 90%;
 							transition: all $time ease;
-							opacity: 0.6;
+							opacity: 1;
+							transform: scale(1) translateY(0) translateZ(0);
 							pointer-events: none;
+
 						}
 						.grid__team_info{
 							display: block;

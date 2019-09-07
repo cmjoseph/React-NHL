@@ -15,9 +15,7 @@ class Teams extends React.Component {
 
     async componentDidMount() {
         const data = await NHLApi.getAllTeams();
-        setTimeout(()=>{ 
-        	this.setState({ done: true, teams: data.teams});
-        }, 1000);
+    	this.setState({ done: true, teams: data.teams});
     }
 	
 	render(){

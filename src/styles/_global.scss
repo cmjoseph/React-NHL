@@ -8,9 +8,20 @@
   	--size-normal: 1.5rem;
     --size-sticky: 1.2rem;
     --size-small: 0.9rem;
+    --mq-mobile: 768px;
 }
 
 $time: 0.35s;
+
+// Media Queries settings
+// -------------------------
+
+$cell:                  "only screen and (max-width:480px)";
+$mobile:                "only screen and (max-width:768px)";
+$tabmini:               "only screen and (max-width:960px)";
+$tablet:                "only screen and (max-width:1024px)";
+$desktop:               "only screen and (min-width:1025px)";
+
 
 html{
     background-color: var(--main-bg-color);
