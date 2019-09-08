@@ -12,30 +12,32 @@ class Home extends React.Component {
     constructor(){
         super();
         this.state = {
+            done: false,
             artist: 'Billy Talent Feat. Anti-Flag',
             song: 'Turn Your Back',
+            data: undefined, 
         };
     }
 
     async componentDidMount() {
         const data = await NHLApi.getAllTeams();
-        this.setState(data);
+        this.setState({ data: data, done: true});
     }
 
     render(){
-        if (this.state.teams === undefined) {
+        if (this.state.done === false) {
             return (
-                <div className="loading__template">
+                <div className="loading__template page">
                     loading...
                 </div>
             );
         } else {
             return (
-                <div className="home__template">
+                <div className="home__template page">
                     <div className="container">
                         <Video url={BackgroundVideo}></Video>
                         <Audio url={BackgroundMusic} artist={this.state.artist} song={this.state.song}></Audio>
-                        <Slider teams={this.state.teams}></Slider>
+                        <Slider teams={this.state.data}></Slider>
                     </div>
                 </div>
             );

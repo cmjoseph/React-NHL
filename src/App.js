@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.scss';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Transition, TransitionGroup } from 'react-transition-group';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Menu from './components/header/Menu';
 // import TopMenu from './components/header/TopMenu';
 
@@ -41,12 +41,35 @@ class App extends React.Component {
                                 <Menu></Menu>
                             </div>
                         </header>
-                        <Switch>
-                            <Route exact path="/" component={Home} />
-                            <Route path="/teams" component={Teams} />
-                            <Route path="/players" component={Players} />
-                            <Route path="/news" component={News} />
-                        </Switch>
+                        <Route
+                            render={({ location }) => {
+                                const { pathname } = location;
+                                return (
+                                    <TransitionGroup>
+                                        <CSSTransition 
+                                          key={pathname}
+                                          classNames="page"
+                                          timeout={{
+                                            enter: 1000,
+                                            exit: 1000,
+                                          }}
+                                        >
+                                        <Route
+                                            location={location}
+                                            render={() => (
+                                                <Switch>
+                                                    <Route exact path="/" component={Home} />
+                                                    <Route path="/teams" component={Teams} />
+                                                    <Route path="/players" component={Players} />
+                                                    <Route path="/news" component={News} />
+                                                </Switch>
+                                            )}
+                                        />
+                                        </CSSTransition>
+                                    </TransitionGroup>
+                                );
+                            }}
+                        />
                     </div>
                 </div>
             </Router>

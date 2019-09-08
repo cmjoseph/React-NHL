@@ -1,54 +1,47 @@
 import React from 'react';
 import NHLApi from '../api/NHLApi';
 import Image from '../media/Images';
-// import Modal from '../tools/Modal';
+import Modal from '../tools/Modal';
 
 class TeamItem extends React.Component {
 
     constructor(props){
         super(props);
-        console.log(props);
         this.state = {
-            logos: props.teams,
-            roster: undefined,
-            modal: undefined,
+            ready: false,
+            teamdata: props.teams,
+            gridteams: undefined,
             activeTeam: undefined,
+            modalactive: false,
+            modaldataplayers: undefined,
+            modaldatateams: undefined,
         };
 
         this.handleClick = this.handleClick.bind(this);
-        this.handleCloseModal = this.handleCloseModal.bind(this);
     }
 
     async handleClick(e){
         e.preventDefault();
         const item = e.target.parentElement.dataset.id;
-        const team = await NHLApi.getAllPlayers(item);
-        const current = this.props.teams.find(x => x.id === parseInt(item));
-        document.body.classList.add('modal-open');
-        this.setState({
-            roster: team.roster,
-            modal: 'active',
-            activeTeam: require(`../../images/teams/${current.teamName.toLowerCase().replace(/\s/g, '')}.svg`),
-        });
+        const data = await NHLApi.getSpecificTeamRoster(item);
+        const getplayers = data.teams[0].roster.roster;
+        if (getplayers !== undefined) {
+            const getteam = this.props.teams.find(x => x.id === parseInt(item));
+            this.setState({
+                activeTeam: require(`../../images/teams/${getteam.teamName.toLowerCase().replace(/\s/g, '')}.svg`),
+                modalactive: true,
+                modaldataplayers: getplayers,
+                modaldatateams: getteam,
+            });
+            document.body.classList.add('modal-open');
+        }
     }
 
-    handleCloseModal(e){
-        e.preventDefault();
-        document.body.classList.remove('modal-open');
-        this.setState({
-            roster: undefined,
-            modal: undefined,
-            activeTeam: undefined,
-        });
-    }
-
-    render(){
-        const data1 = this.state.logos;
-        const data2 = this.state.roster;
-        let players = undefined;
+    componentDidMount(){
+        const teamgrid = this.state.teamdata;
         let logos = undefined;
-        if (data1 !== undefined) {
-            logos = data1.map(logo => {
+        if (teamgrid !== undefined) {
+            logos = teamgrid.map(logo => {
             return  <a onClick={this.handleClick} data-id={logo.id} href="/" target="_blank" rel="noopener noreferrer" className="grid__team_item" key={logo.name}>
                         <div className="grid__item_content">
                             <Image logo={require(`../../images/teams/${logo.teamName.toLowerCase().replace(/\s/g, '')}.svg`)} name={logo.name}/>
@@ -57,16 +50,17 @@ class TeamItem extends React.Component {
                     </a>
             });
         }
-        if (data2 !== undefined) {
-            players = data2.map(player => {
-            return  <div className="modal__player_item" key={player.person.id}>
-                        <Image logo={`https://nhl.bamcontent.com/images/headshots/current/168x168/${player.person.id}.jpg`} name={player.person.fullName} jersey={player.jerseyNumber}/>
-                        <span className="modal__player_info">{player.person.fullName}</span>
-                        <span className="modal__player_jersey">{`#${player.jerseyNumber}`}</span>
-                    </div>
-            });
-        }
-        if (logos === undefined) {
+        this.setState({
+            ready: true,
+            gridteams: logos,
+        });
+    }
+
+    render(){
+        const headshots = this.state.modaldataplayers;
+        const ready = this.state.ready;
+        const grid = this.state.gridteams;
+        if (!ready) {
             return(
                 <div className="loading__template">
                     loading...
@@ -76,17 +70,9 @@ class TeamItem extends React.Component {
             return(
                 <div className="grid__wrapper">
                     <div className="grid">
-                        {logos}
+                        {grid}
                     </div>
-                    <div className="modal">
-                        <div className="modal__inner">
-                            <img className="modal__team_logo" src={this.state.activeTeam} alt="Logo"/>
-                            <button onClick={this.handleCloseModal}>Close</button>
-                            <div className="modal__grid">
-                                {players}
-                            </div>
-                        </div>
-                    </div>
+                    <Modal data={headshots} team={this.state.activeTeam}></Modal> : null
                 </div>
             )
         }

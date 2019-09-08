@@ -1,13 +1,7 @@
 .players__template{
 	position: relative;
-	background-color: var(--main-bg-color);
     width: 100%;
     min-height: 100vh;
-    background-image: url('../../images/ice.jpg');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    background-attachment: fixed;
     padding-top: 100px;
 	.grid__section{
 		position: relative;

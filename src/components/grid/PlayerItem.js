@@ -1,6 +1,5 @@
 import React from 'react';
 import NHLApi from '../api/NHLApi';
-import Image from '../media/Images';
 import SearchBar from '../tools/SearchBar';
 
 class PlayerItem extends React.Component {
@@ -17,7 +16,7 @@ class PlayerItem extends React.Component {
         const allrosters = [];
         let list = undefined;
         const data = this.state.data;
-        let teams = await Promise.all(data.map(async (team, key) => {
+        await Promise.all(data.map(async (team, key) => {
             try {
                 list = await NHLApi.getAllPlayers(team.id);
                 allrosters.push({ logo: team.teamName, list: list.roster});
@@ -32,19 +31,20 @@ class PlayerItem extends React.Component {
         if (this.state.rosters !== undefined) {
             const data = this.state.rosters;
             const names = [];
-            let rosters = data.map((roster, key) => {
-                const teamroster = roster.list;
-                const teamlogo = roster.logo;
-                let players = teamroster.map((player, key) => {
+            let teamroster, teamlogo = undefined;
+            for (let i = 0; i < data.length; i++) {
+                teamroster = data[i].list;
+                teamlogo = data[i].logo;
+                for (let i = 0; i < teamroster.length; i++) {
                     names.push({
-                        name: player.person.fullName, 
+                        name: teamroster[i].person.fullName, 
                         team: teamlogo,
-                        face: player.person.id,
-                        jersey: player.jerseyNumber,
-                        link: player.person.link,
+                        face: teamroster[i].person.id,
+                        jersey: teamroster[i].jerseyNumber,
+                        link: teamroster[i].person.link,
                     });
-                });
-            });
+                }
+            }
             return(
                 <SearchBar users={names}></SearchBar>
             )

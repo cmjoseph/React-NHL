@@ -7,26 +7,27 @@ class Players extends React.Component {
 	constructor(){
         super();
         this.state = {
+            ready: false,
             roster: undefined,
         };
     }
 
     async componentDidMount() {
         const allteams = await NHLApi.getAllTeams();
-        this.setState({ roster: allteams.teams });
+        this.setState({ roster: allteams.teams, ready: true });
     }
 	
 	render(){
-		if (this.state.roster === undefined) {
+		if (this.state.ready === false) {
             return (
-                <div className="home__template">
+                <div className="loading__template page">
                     loading...
                 </div>
             );
         } else {
             const all = this.state.roster;
 		    return (
-		        <div className="players__template">
+		        <div className="players__template page">
                     <div className="container">
     			        <div className="grid__section">
                             <PlayerItem allteams={all}></PlayerItem>

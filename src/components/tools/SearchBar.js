@@ -55,7 +55,7 @@ class SearchBar extends React.Component {
                     return (
                         <a className="grid__player" onClick={this.handleClick} href={l.link} key={key} data-team={l.team} data-face={`https://nhl.bamcontent.com/images/headshots/current/168x168/${l.face}.jpg`} data-name={l.name} data-jersey={l.jersey}>
                             <span>{l.name}</span>
-                            <img src={require(`../../images/teams/${l.team.toLowerCase().replace(/\s/g, '')}.svg`)}/>
+                            <img src={require(`../../images/teams/${l.team.toLowerCase().replace(/\s/g, '')}.svg`)} alt="Logo"/>
                         </a>
                     );
                 })}

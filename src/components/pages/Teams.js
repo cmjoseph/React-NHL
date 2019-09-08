@@ -21,13 +21,13 @@ class Teams extends React.Component {
 	render(){
 		if (this.state.done === false) {
             return (
-                <div className="loading__template">
+                <div className="loading__template page">
                     <img src={Logo} alt="Loading..."/>
                 </div>
             );
         } else {
 		    return (
-		        <div className="teams__template">
+		        <div className="teams__template page">
 			        <div className="container">
 				        <div className="grid__section">
 							<TeamItem teams={this.state.teams}></TeamItem>

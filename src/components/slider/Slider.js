@@ -6,7 +6,8 @@ class Slider extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            teams: props.teams
+            done: false,
+            teams: props.teams.teams
         };
     }
 
