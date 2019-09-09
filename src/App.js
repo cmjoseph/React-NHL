@@ -50,8 +50,8 @@ class App extends React.Component {
                                           key={pathname}
                                           classNames="page"
                                           timeout={{
-                                            enter: 1000,
-                                            exit: 1000,
+                                            enter: 2000,
+                                            exit: 2000,
                                           }}
                                         >
                                         <Route
