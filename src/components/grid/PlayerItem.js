@@ -36,12 +36,14 @@ class PlayerItem extends React.Component {
                 teamroster = data[i].list;
                 teamlogo = data[i].logo;
                 for (let i = 0; i < teamroster.length; i++) {
+                	// console.log(teamroster[i]);
                     names.push({
                         name: teamroster[i].person.fullName, 
                         team: teamlogo,
                         face: teamroster[i].person.id,
                         jersey: teamroster[i].jerseyNumber,
                         link: teamroster[i].person.link,
+                        position: teamroster[i].position.name,
                     });
                 }
             }
