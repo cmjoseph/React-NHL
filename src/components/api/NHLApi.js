@@ -31,6 +31,11 @@ class NHLApi extends React.Component{
         return fetch(`https://statsapi.web.nhl.com/api/v1/teams/${teamID}/?expand=team.roster`)
                     .then(resp => resp.json());
     }
+
+    static getSpecificPlayerStats(playerID) {
+        return fetch(`https://statsapi.web.nhl.com/api/v1/people/${playerID}/stats?stats=statsSingleSeason&season=20182019`)
+                    .then(resp => resp.json());   
+    }
 }
 
 export default NHLApi;
