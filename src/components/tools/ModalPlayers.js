@@ -19,7 +19,7 @@ class ModalPlayers extends React.Component {
         const team = this.props.team;
         const player = data.people[0];
         const playerStats = stats.stats[0].splits[0];
-        console.log(player);
+        console.log(playerStats);
         
         if (player === undefined || team === undefined) {
     	 	return (
@@ -40,9 +40,35 @@ class ModalPlayers extends React.Component {
                         <div className="modal__grid_player">
                             <div className="modal__left">
                                 <div className="info__headshot">
-                                    <img className="modal__stats_head" src={`https://nhl.bamcontent.com/images/headshots/current/168x168/${player.id}.jpg`} alt={player.fullName} />
-                                    <img className="modal__stats_logo" src={require(`../../images/teams/${team.toLowerCase().replace(/\s/g, '')}.svg`)} alt="Logo"/>
+                                    <div className="wrapper">
+                                        <img className="modal__stats_head" src={`https://nhl.bamcontent.com/images/headshots/current/168x168/${player.id}.jpg`} alt={player.fullName} />
+                                        <img className="modal__stats_logo" src={require(`../../images/teams/${team.toLowerCase().replace(/\s/g, '')}.svg`)} alt="Logo"/>
+                                    </div>
                                 </div>
+                                <table>
+                                    <thead>
+                                        <th>Name</th>
+                                        <th>Name</th>
+                                        <th>Name</th>
+                                        <th>Name</th>
+                                        <th>Name</th>
+                                        <th>Name</th>
+                                        <th>Name</th>
+                                        <th>Name</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>Name</td>
+                                            <td>Name</td>
+                                            <td>Name</td>
+                                            <td>Name</td>
+                                            <td>Name</td>
+                                            <td>Name</td>
+                                            <td>Name</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                                 <div className="info__stats">
                                     <div className="fullName">
                                         <span className="label">Name</span>
