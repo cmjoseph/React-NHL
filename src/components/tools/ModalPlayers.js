@@ -6,6 +6,10 @@ class ModalPlayers extends React.Component {
 	constructor(props){
         super(props);
         this.handleCloseModal = this.handleCloseModal.bind(this);
+        this.countries = {
+            DNK: 'Danemark',
+            CAN: 'Canada',
+        }
     }
 
     handleCloseModal(e){
@@ -18,7 +22,7 @@ class ModalPlayers extends React.Component {
         const stats = this.props.stats;
         const team = this.props.team;
         const player = data.people[0];
-        const playerStats = stats.stats[0].splits[0];
+        const playerStats = stats.stats[0].splits[0].stat;
         console.log(playerStats);
         
         if (player === undefined || team === undefined) {
@@ -32,7 +36,7 @@ class ModalPlayers extends React.Component {
                     </div>
                 </div>
             )
-        } else {
+        } else if (playerStats !== undefined) {
             return(
                 <div className="modal">
                     <div className="modal__inner">
@@ -45,116 +49,68 @@ class ModalPlayers extends React.Component {
                                         <img className="modal__stats_logo" src={require(`../../images/teams/${team.toLowerCase().replace(/\s/g, '')}.svg`)} alt="Logo"/>
                                     </div>
                                 </div>
-                                <table>
+                                <table className="bio__stats">
                                     <thead>
-                                        <th>Name</th>
-                                        <th>Name</th>
-                                        <th>Name</th>
-                                        <th>Name</th>
-                                        <th>Name</th>
-                                        <th>Name</th>
-                                        <th>Name</th>
-                                        <th>Name</th>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Number</th>
+                                            <th>Birthday</th>
+                                            <th>Age</th>
+                                            <th>Height</th>
+                                            <th>Weight</th>
+                                            <th>Country</th>
+                                            <th>City</th>
+                                            <th>Position</th>
+                                            <th>Shoots</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>Name</td>
-                                            <td>Name</td>
-                                            <td>Name</td>
-                                            <td>Name</td>
-                                            <td>Name</td>
-                                            <td>Name</td>
-                                            <td>Name</td>
-                                            <td>Name</td>
+                                            <td>{player.fullName}</td>
+                                            <td>{player.primaryNumber}</td>
+                                            <td>{player.birthDate}</td>
+                                            <td>{player.currentAge}</td>
+                                            <td>{player.height}</td>
+                                            <td>{player.weight}</td>
+                                            <td>{player.birthCountry}</td>
+                                            <td>{player.birthCity}</td>
+                                            <td>{player.primaryPosition.name}</td>
+                                            <td>{player.shootsCatches}</td>
                                         </tr>
                                     </tbody>
                                 </table>
-                                <div className="info__stats">
-                                    <div className="fullName">
-                                        <span className="label">Name</span>
-                                        <span className="info">{player.fullName}</span>
-                                    </div>
-                                    <div className="primaryNumber">
-                                        <span className="label">Jersey Number</span>
-                                        <span className="info">#{player.primaryNumber}</span>
-                                    </div>
-                                    <div className="birthDate">
-                                        <span className="label">Birthday</span>
-                                        <span className="info">{player.birthDate}</span>
-                                    </div>
-                                    <div className="currentAge">
-                                        <span className="label">Age</span>
-                                        <span className="info">{player.currentAge}</span>
-                                    </div>
-                                    <div className="measurements">
-                                        <span className="label">Height</span>
-                                        <span className="info">{player.height}</span>
-                                    </div>
-                                    <div className="measurements">
-                                        <span className="label">Weight</span>
-                                        <span className="info">{player.weight} lbs</span>
-                                    </div>
-                                    <div className="birthCountry">
-                                        <span className="label">Country</span>
-                                        <span className="info">{player.birthCountry}</span>
-                                    </div>
-                                    <div className="birthCountry">
-                                        <span className="label">City</span>
-                                        <span className="info">{player.birthCity}</span>
-                                    </div>
-                                    <div className="primaryPosition">
-                                        <span className="label">Position</span>
-                                        <span className="info">{player.primaryPosition.name}</span>
-                                    </div>
-                                    <div className="primaryPosition">
-                                        <span className="label">Shoots</span>
-                                        <span className="info">{player.shootsCatches}</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="modal__right">
-                                <div className="season__stats">
-                                    <div className="fullName">
-                                        <span className="label">Name</span>
-                                        <span className="info">{player.fullName}</span>
-                                    </div>
-                                    <div className="primaryNumber">
-                                        <span className="label">Jersey Number</span>
-                                        <span className="info">#{player.primaryNumber}</span>
-                                    </div>
-                                    <div className="birthDate">
-                                        <span className="label">Birthday</span>
-                                        <span className="info">{player.birthDate}</span>
-                                    </div>
-                                    <div className="currentAge">
-                                        <span className="label">Age</span>
-                                        <span className="info">{player.currentAge}</span>
-                                    </div>
-                                    <div className="measurements">
-                                        <span className="label">Height</span>
-                                        <span className="info">{player.height}</span>
-                                    </div>
-                                    <div className="measurements">
-                                        <span className="label">Weight</span>
-                                        <span className="info">{player.weight} lbs</span>
-                                    </div>
-                                    <div className="birthCountry">
-                                        <span className="label">Country</span>
-                                        <span className="info">{player.birthCountry}</span>
-                                    </div>
-                                    <div className="birthCountry">
-                                        <span className="label">City</span>
-                                        <span className="info">{player.birthCity}</span>
-                                    </div>
-                                    <div className="primaryPosition">
-                                        <span className="label">Position</span>
-                                        <span className="info">{player.primaryPosition.name}</span>
-                                    </div>
-                                    <div className="primaryPosition">
-                                        <span className="label">Shoots</span>
-                                        <span className="info">{player.shootsCatches}</span>
-                                    </div>
-                                </div>
+                                <table className="player__stats">
+                                    <thead>
+                                        <tr>
+                                            <th>Games</th>
+                                            <th>Goals</th>
+                                            <th>Assists</th>
+                                            <th>Points</th>
+                                            <th>Plus/Minus</th>
+                                            <th>Powerplay Goals</th>
+                                            <th>Powerplay Points</th>
+                                            <th>Shorthanded Goals</th>
+                                            <th>Hits</th>
+                                            <th>Penalty Minutes</th>
+                                            <th>Shots On Goal</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>{playerStats.games}</td>
+                                            <td>{playerStats.goals}</td>
+                                            <td>{playerStats.assists}</td>
+                                            <td>{playerStats.points}</td>
+                                            <td>{playerStats.plusMinus}</td>
+                                            <td>{playerStats.powerPlayGoals}</td>
+                                            <td>{playerStats.powerPlayPoints}</td>
+                                            <td>{playerStats.shortHandedGoals}</td>
+                                            <td>{playerStats.hits}</td>
+                                            <td>{playerStats.pim}</td>
+                                            <td>{playerStats.shots}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
